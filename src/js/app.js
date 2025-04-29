@@ -60,6 +60,14 @@ function render(variables = {}) {
     )
     .join("");
 
+  // Creación de la condició para colocar los íconos de REdes sociales en la derecha o la izquierda
+  let socialPositionClass = "position-right"; // He dejado "Derecha" como predeterminado
+  if (variables.socialMediaPosition === "position-left") {
+    socialPositionClass = "position-left";
+  } else if (variables.socialMediaPosition === "position-right") {
+    socialPositionClass = "position-right";
+  }
+
   // reset the website body with the new html output
   document.querySelector(
     "#widget_content"
@@ -68,7 +76,7 @@ function render(variables = {}) {
       <h1>${fullname}</h1>
       <h2>${role}</h2>
       <h3>${city}${city && country ? ", " : ""}${country}</h3>
-      <ul class="position-right">
+      <ul class="${socialPositionClass}">
         ${socialHTML}
       </ul>
     </div>
